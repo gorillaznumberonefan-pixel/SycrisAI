@@ -1,1 +1,242 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#171A20">
+  <title>Cleverence Response Template | Sycris AI</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .template-layout {
+      display: flex;
+      min-height: calc(100vh - 80px);
+    }
+
+    .template-sidebar {
+      background: #13161B;
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 24px 18px;
+      width: 250px;
+      flex-shrink: 0;
+    }
+
+    .template-sidebar p {
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+
+    .template-sidebar a {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+      transition: background 0.2s ease;
+    }
+
+    .template-sidebar a:hover {
+      background: var(--surface);
+    }
+
+    .template-main {
+      align-items: center;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      min-width: 0;
+      padding: 60px 24px 30px;
+    }
+
+    .template-conversation {
+      max-width: 760px;
+      width: 100%;
+    }
+
+    .template-title {
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .template-subtitle {
+      color: var(--muted);
+      margin-bottom: 42px;
+      text-align: center;
+    }
+
+    .template-user {
+      background: var(--surface-hover);
+      border-radius: 18px;
+      margin: 0 0 28px auto;
+      max-width: 85%;
+      padding: 14px 18px;
+      width: fit-content;
+    }
+
+    .template-assistant {
+      line-height: 1.8;
+      padding: 8px 0 24px;
+    }
+
+    .template-assistant-heading {
+      align-items: center;
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .template-avatar {
+      align-items: center;
+      background: var(--orange);
+      border-radius: 50%;
+      color: var(--background);
+      display: flex;
+      font-size: 1.1rem;
+      font-weight: 700;
+      height: 36px;
+      justify-content: center;
+      width: 36px;
+    }
+
+    .template-response {
+      white-space: pre-line;
+    }
+
+    .template-actions {
+      display: flex;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .template-actions button {
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 7px 12px;
+    }
+
+    .template-actions button:hover {
+      border-color: var(--orange);
+      color: var(--text);
+    }
+
+    .template-composer {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      color: var(--muted);
+      margin-top: 30px;
+      max-width: 760px;
+      padding: 16px 18px;
+      width: 100%;
+    }
+
+    .template-composer p {
+      font-size: 0.9rem;
+    }
+
+    .template-disclaimer {
+      color: var(--muted);
+      font-size: 0.75rem;
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 650px) {
+      .template-sidebar {
+        display: none;
+      }
+
+      .template-main {
+        padding: 45px 18px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-icon">S</span>
+      <span>Sycris <span class="accent">AI</span></span>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cleverence.html">Cleverence</a>
+    </nav>
+  </header>
+
+  <div class="template-layout">
+    <aside class="template-sidebar">
+      <a href="cleverence.html">← Back to Cleverence</a>
+      <p>DEVELOPMENT TEMPLATE</p>
+      <p>This page is a starting point for designing reusable assistant responses.</p>
+      <p>Sample conversation</p>
+    </aside>
+
+    <main class="template-main">
+      <div class="template-conversation">
+        <h1 class="template-title">Meet <span class="accent">Cleverence.</span></h1>
+        <p class="template-subtitle">
+          A reusable response design by Sycris AI
+        </p>
+
+        <div class="template-user">
+          Hello, Cleverence!
+        </div>
+
+        <section class="template-assistant">
+          <div class="template-assistant-heading">
+            <div class="template-avatar">C</div>
+            <strong>Cleverence</strong>
+          </div>
+
+          <div class="template-response">Hello! I'm Cleverence, an AI assistant developed by Sycris AI.
+
+I'm still in development, but this is the beginning of something new. What would you like to explore?</div>
+
+          <div class="template-actions">
+            <button type="button" id="copy-response">Copy response</button>
+            <button type="button" id="reset-response">Reset preview</button>
+          </div>
+        </section>
+      </div>
+
+      <div class="template-composer">
+        <p>Message Cleverence... (preview only)</p>
+      </div>
+
+      <p class="template-disclaimer">
+        Development template · This is a prewritten sample, not a live AI.
+      </p>
+    </main>
+  </div>
+
+  <script>
+    const originalResponse =
+      "Hello! I'm Cleverence, an AI assistant developed by Sycris AI.\n\nI'm still in development, but this is the beginning of something new. What would you like to explore?";
+
+    const responseElement = document.querySelector(".template-response");
+    const copyButton = document.querySelector("#copy-response");
+    const resetButton = document.querySelector("#reset-response");
+
+    copyButton.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(originalResponse);
+        copyButton.textContent = "Copied!";
+      } catch {
+        copyButton.textContent = "Copy unavailable";
+      }
+    });
+
+    resetButton.addEventListener("click", () => {
+      responseElement.textContent = originalResponse;
+      copyButton.textContent = "Copy response";
+    });
+  </script>
+</body>
+</html>
+

@@ -1,2 +1,2 @@
 # SycrisAI
-A new ai project that is currently focused mainly on chatbots.
+A new AI project that is currently focused mainly on chatbots.
